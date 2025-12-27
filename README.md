@@ -11,13 +11,8 @@ of expenses by category.
 ## ✨ Features
 - Enter monthly income and period
 - Add multiple expenses dynamically from categorized expenses (housing, food, transport, health, etc.)
-- Automatic calculation of:
-  - Total expenses
-  - Remaining money
-  - Savings rate (% of income)
-- Visual expense breakdown with progress bars
-- Feedback for overspending vs saving
-
+- Automatic calculation of: Total expenses, Visual expense breakdown with progress bars
+- Feedback for overspending vs saving for remaining money
 ---
 ## 🖼️ What the app looks like
 
