@@ -4,7 +4,7 @@ A clean and user-friendly **Flask web application** that helps users analyze the
 The app calculates total expenses, remaining savings, savings rate, and displays a visual percentage breakdown
 of expenses by category.
 
-🔗 **You can try how it works from the live demo: [Let's go](https://selen23.pythonanywhere.com)
+🔗 You can try how it works from the live demo: [Let's go](https://selen23.pythonanywhere.com)
 
 
 ---
@@ -22,16 +22,34 @@ of expenses by category.
 ## 🖼️ What the app looks like
 
 ### Home
-![Home screen](screenshots/home.png)
 
-### Adding categories
-![Categories](screenshots/categories.png)
+<table>
+  <tr>
+    <td align="center">
+      <b>Home</b><br>
+      <img src="screenshots/home.png" width="500">
+    </td>
+    <td align="center">
+      <b>Categories</b><br>
+      <img src="screenshots/categories.png" width="450">
+    </td>
+  </tr>
+</table>
 
-### Results – Saving
-![Positive result](screenshots/results_positive.png)
+### Results
 
-### Results – Overspending
-![Negative result](screenshots/results_negative.png)
+<table>
+  <tr>
+    <td align="center">
+      <b>Saving</b><br>
+      <img src="screenshots/results_positive.png" width="500">
+    </td>
+    <td align="center">
+      <b>Overspending</b><br>
+      <img src="screenshots/results_negative.png" width="500">
+    </td>
+  </tr>
+</table>
 
 
 ---
