@@ -90,7 +90,7 @@ MonthlyExpenseReport/
 ├── month_budget/
 │   ├── budget.py           # Core business logic (OOP)
 │   └── design.txt          # Design notes
-│   └── main.py             # initial testing of the project from terminal before moving to flask
+│   └── main.py             # initial testing of the project before app
 │
 ├── templates/
 │   └── index.html          # Main HTML template
