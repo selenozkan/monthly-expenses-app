@@ -1,0 +1,22 @@
+Title: Monthly Expense Report
+Description: The goal of this project is for a user to enter their income for a given month,
+and the expenses (based on specific categories)
+they made during that month. The program will then give an output of total expense, category % breakdown and how much money is left
+with simple flags/insights.
+Objects: MonthlyBudget:
+            income: float
+            period: string
+            expenses: dict
+            add_expense()
+            total_expenses()
+            remaining()
+            percent_of_expense_by_category()
+            savings_rate() = remaining / income
+
+Categories:
+- Housing (Rent, Utilities)
+- Food (Groceries, eating out)
+- Transport (public transport, taxi, fuel)
+- Entertainment (shopping, socializing, subscriptions)
+- Health (doctor, pharmacy, insurance, fitness)
+- Extras

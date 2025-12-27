@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Monthly Expense Report</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+  <h2>Monthly Expense Report</h2>
+  <p>A simple tool to help you understand how you spend your money.</p>
+  <p>Add your income and monthly expenses to see a clear breakdown and how much you actually save.</p>
+
+  {% if error %}
+  <div class="status status-bad">{{ error }}</div>
+{% endif %}
+
+  <form class="form-card" action="{{ url_for('index') }}" method="post">
+
+    <!-- Month/Income box -->
+    <div class="section-box-one">
+      <h3>Month & Income</h3>
+
+      <div class="field">
+        {{ form.user_period.label }}
+        {{ form.user_period }}
+      </div>
+
+      <div class="field">
+        {{ form.user_income.label }}
+        {{ form.user_income }}
+      </div>
+    </div>
+
+    <!-- Expenses box -->
+    <div class="section-box-two">
+      <h3>Expenses</h3>
+
+      <div id="expense-rows">
+        <div class="expense-row is-new">
+          <select name="category[]" class="category-select">
+            <option value="housing">Housing (Rent, Utilities..)</option>
+            <option value="food">Food (Groceries, eating out..)</option>
+            <option value="transport">Transport (public transport, taxi, fuel...)</option>
+            <option value="entertainment">Entertainment (shopping, socializing, subscriptions...)</option>
+            <option value="health">Health (doctor, pharmacy, insurance, gym...)</option>
+            <option value="extras">Extras</option>
+          </select>
+
+          <input name="amount[]" type="number" step="0.01" min="0"
+                 placeholder="0.00" class="amount-input" />
+
+          <!-- + button next to amount -->
+          <button type="button" class="add-inline-btn" onclick="addRow()" title="Add another expense">＋</button>
+
+          <!-- remove row -->
+          <button type="button" class="remove-btn" onclick="removeRow(this)" title="Remove this row">×</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      {{ form.button(class_="primary-btn") }}
+
+      <button type="button" class="secondary-btn"
+              onclick="window.location.href='{{ url_for('index') }}'">
+        Reset
+      </button>
+    </div>
+
+  </form>
+
+  <!-- Results -->
+{% if total_expense is defined and remaining is defined and savings_rate is defined and period is defined %}
+<div class="results-box {% if remaining <= 0 %}results-bad{% else %}results-good{% endif %}">
+  <h2>Results: The Expense Report of {{ period }}</h2>
+  <p><strong>Total expenses:</strong> {{ "%.2f"|format(total_expense) }} €</p>
+
+  {% if remaining <= 0 %}
+    <div class="status status-bad">
+      <strong>Oops.</strong> You went over budget by {{ "%.2f"|format(-remaining) }} €.
+    </div>
+  {% else %}
+    <div class="status status-good">
+      <strong>Nice!</strong> You saved {{ "%.2f"|format(remaining) }} € — {{ "%.2f"|format(savings_rate) }}% of your income.
+    </div>
+  {% endif %}
+
+
+  <!-- Breakdown (we'll add this below) -->
+    {% if breakdown is defined %}
+  <h3 class="breakdown-title">Expense breakdown</h3>
+
+  <div class="breakdown">
+    {% for cat, pct in breakdown.items() %}
+      <div class="breakdown-row">
+        <div class="breakdown-label">
+          <span class="cat">{{ cat.replace('_',' ')|title }}</span>
+          <span class="pct">{{ "%.1f"|format(pct) }}%</span>
+        </div>
+        <div class="bar">
+          <div class="bar-fill" style="width: {{ pct }}%;"></div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+</div>
+{% endif %}
+
+  <script>
+    function addRow() {
+      const container = document.getElementById("expense-rows");
+      const template = container.querySelector(".expense-row");
+      const newRow = template.cloneNode(true);
+
+      // Reset amount
+      newRow.querySelector(".amount-input").value = "";
+
+      // Mark existing rows as not-new
+      container.querySelectorAll(".expense-row").forEach(r => r.classList.remove("is-new"));
+
+      // Mark new row as current
+      newRow.classList.add("is-new");
+
+      container.appendChild(newRow);
+      updateRowButtons();
+    }
+
+    function removeRow(btn) {
+      const container = document.getElementById("expense-rows");
+      const rows = container.querySelectorAll(".expense-row");
+      if (rows.length === 1) return; // keep at least one row
+      btn.closest(".expense-row").remove();
+      updateRowButtons();
+    }
+
+    function updateRowButtons() {
+      const container = document.getElementById("expense-rows");
+      const rows = Array.from(container.querySelectorAll(".expense-row"));
+
+      rows.forEach((row, idx) => {
+        const addBtn = row.querySelector(".add-inline-btn");
+        const removeBtn = row.querySelector(".remove-btn");
+
+        // show + only on last row
+        addBtn.style.display = (idx === rows.length - 1) ? "inline-flex" : "none";
+
+        // hide remove if only one row
+        removeBtn.style.display = (rows.length === 1) ? "none" : "inline-flex";
+      });
+    }
+
+    // Initial state
+    updateRowButtons();
+  </script>
+
+</body>
+</html>

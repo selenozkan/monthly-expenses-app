@@ -1,0 +1,314 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page background */
+body {
+    margin: 0;
+    padding: 0 12px;
+    color: #333;
+
+    /* subtle professional background */
+    background-color: #f7f8fa;
+}
+
+/* Title and intro text */
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    margin: 6px 0;
+    color: #555;
+}
+
+/* Main centered card */
+.form-card {
+    max-width: 560px;
+    margin: 25px auto 30px auto;
+    padding: 22px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #fafafa;
+}
+
+/* Sections */
+.section-box-one {
+    background: #f2f0e6;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.section-box-one {
+    background: #f8faf7;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.section-box-one h3 {
+    margin: 0 0 12px 0;
+}
+
+.section-box-two {
+    background: #f8faf7;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.section-box-two h3 {
+    margin: 0 0 12px 0;
+}
+/* Field layout */
+.field {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+/* Base inputs */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Expense rows */
+.expense-row {
+    display: flex;
+    gap: 12px;                 /* a bit more airy */
+    align-items: center;
+    padding: 12px;             /* a bit more comfy */
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+    background: #f7f7f7;       /* already added rows */
+    margin-bottom: 10px;
+}
+
+.expense-row.is-new {
+    background: #eaf3ff;       /* currently adding row */
+    border-color: #cfe3ff;
+}
+
+/* ---------- Cuter, larger dropdown ---------- */
+.category-select {
+    flex: 2;
+    padding: 12px 12px;
+    border-radius: 12px;
+    border: 1px solid #cfd8e3;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+    /* nicer arrow (works in most browsers) */
+    appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #6b7280 50%),
+      linear-gradient(135deg, #6b7280 50%, transparent 50%);
+    background-position:
+      calc(100% - 18px) 52%,
+      calc(100% - 12px) 52%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 34px;
+}
+
+.category-select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.18);
+}
+/* ------------------------------------------ */
+
+.amount-input {
+    flex: 1;
+}
+
+/* Inline + button */
+.add-inline-btn {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+.add-inline-btn:hover {
+    background-color: #357abd;
+}
+
+/* Remove button */
+.remove-btn {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #999;
+    color: #fff;
+}
+
+.remove-btn:hover {
+    background-color: #777;
+}
+
+/* Bottom actions */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Big calculate button */
+.primary-btn,
+input[type="submit"] {
+    width: 100%;
+    max-width: 260px;
+    padding: 14px 18px;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.primary-btn:hover,
+input[type="submit"]:hover {
+    background-color: #357abd;
+}
+
+/* Reset button */
+.secondary-btn {
+    width: 100%;
+    max-width: 140px;
+    padding: 14px 18px;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 16px;
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.secondary-btn:hover {
+    background-color: #f2f2f2;
+}
+
+/* Results box */
+.results-box {
+    max-width: 560px;
+    margin: 0 auto 40px auto;
+    padding: 18px;
+    border-radius: 12px;
+    background-color: #f5f8fa;
+    border: 1px solid #d6e0e7;
+}
+
+.results-box h2 {
+    text-align: left;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+}
+
+.results-box p {
+    text-align: left;
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Results background states */
+.results-good {
+    background-color: #eaf7ee;  /* soft green */
+    border-color: #bfe7c8;
+}
+
+.results-bad {
+    background-color: #fdecec;  /* soft red */
+    border-color: #f3bcbc;
+}
+
+/* Status message inside results */
+.status {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid;
+    font-weight: 600;
+}
+
+.status-good {
+    background: #eaf7ee;
+    border-color: #bfe7c8;
+    color: #1f7a3a;
+}
+
+.status-bad {
+    background: #fdecec;
+    border-color: #f3bcbc;
+    color: #b42318;
+}
+
+/* Breakdown */
+.breakdown-title {
+    margin: 16px 0 10px 0;
+    font-size: 16px;
+}
+
+.breakdown-row {
+    margin-bottom: 10px;
+}
+
+.breakdown-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.bar {
+    width: 100%;
+    height: 10px;
+    background: #e9eef3;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid #dbe3ea;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #4a90e2;
+    border-radius: 999px;
+}
